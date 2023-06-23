@@ -1,7 +1,7 @@
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
 
 class CosmosDbService:
-    def __init__(self, endpoint, key, database_name, container_name):
+    def __init__(self, endpoint, key, database_name, container_name, partition_key="/id"):
         self.client = CosmosClient(endpoint, key)
         self.database_client = self.client.get_database_client(database_name)
         try:
@@ -12,5 +12,7 @@ class CosmosDbService:
             # If the container does not exist, create it
             self.container = self.database_client.create_container_if_not_exists(
                 id=container_name,
-                partition_key=PartitionKey(path="/partition_key")
+                partition_key=PartitionKey(path=partition_key)
             )
+    async def add_item_async(self, item):
+        await self.container.upsert_item(item)

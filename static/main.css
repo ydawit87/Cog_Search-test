@@ -1,0 +1,9 @@
+.user-input {
+    background-color: lightblue;
+    /* other styles for user input text box */
+}
+
+.ai-response {
+    background-color: lightgreen;
+    /* other styles for AI response text box */
+}
