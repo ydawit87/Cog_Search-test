@@ -7,25 +7,19 @@
 
 <body>
   <h3>Chat with AI</h3>
-  <form action="/" method="post" onsubmit="showResponseBox()">
+  <form action="/" method="post">
     <label for="user-input">User:</label>
     <textarea id="user-input" name="user-input" placeholder="Enter your message" required></textarea>
     <input type="submit" value="Submit" />
   </form>
-  <div id="ai-response-box" style="display: none;">
-    {% if result %}
-    <label for="ai-response">AI Companion:</label>
-    <textarea id="ai-response" class="result">{{ result }}</textarea>
-    {% endif %}
-  </div>
+  {% if user_input and ai_response %}
+  <label for="user-input">User:</label>
+  <textarea id="user-input" class="user-input" readonly>{{ user_input }}</textarea>
+  <label for="ai-response">AI Companion:</label>
+  <textarea id="ai-response" class="ai-response" readonly>{{ ai_response }}</textarea>
+  {% endif %}
   <script>
-    function showResponseBox() {
-      document.getElementById('ai-response-box').style.display = 'block';
-    }
     window.scrollTo(0,document.body.scrollHeight);
   </script>
 </body>
 </html>
-
-
-

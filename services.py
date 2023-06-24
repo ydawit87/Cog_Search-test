@@ -1,4 +1,7 @@
+
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
+import openai
+
 
 class CosmosDbService:
     def __init__(self, endpoint, key, database_name, container_name, partition_key="/id"):
@@ -14,5 +17,19 @@ class CosmosDbService:
                 id=container_name,
                 partition_key=PartitionKey(path=partition_key)
             )
-    async def add_item_async(self, item):
-        await self.container.upsert_item(item)
+
+    def add_item(self, item):
+        self.container.upsert_item(item)
+
+class OpenAIService:
+    def __init__(self, api_key):
+        openai.api_key = api_key
+
+    def generate_message(self, prompt):
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=prompt,
+            temperature=0.5,
+            max_tokens=100
+        )
+        return response.choices[0].text.strip()
