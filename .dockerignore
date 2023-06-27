@@ -1,0 +1,13 @@
+__pycache__
+*.py[cod]
+*.env
+*.log
+venv/
+env/
+conda/
+.git/
+.vscode/
+Dockerfile
+docker-compose.yml
+README.md
+```
