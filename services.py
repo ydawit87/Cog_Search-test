@@ -4,7 +4,7 @@ import openai
 
 
 class CosmosDbService:
-    def __init__(self, endpoint, key, database_name, container_name, partition_key="/id"):
+    def __init__(self, endpoint, key, database_name, container_name, partition_key="/conversation-id"):
         self.client = CosmosClient(endpoint, key)
         self.database_client = self.client.get_database_client(database_name)
         try:

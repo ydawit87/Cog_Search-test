@@ -15,5 +15,3 @@ if app.config.get('OPENAI_API_KEY'):
     openai_service = OpenAIService(app.config['OPENAI_API_KEY'])
 
 import routes
-
-#print("OPENAI_API_KEY:", app.config['OPENAI_API_KEY'])
