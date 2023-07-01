@@ -19,7 +19,7 @@ EXPOSE 5000
 #ENV COSMOS_DB_KEY=your-cosmos-db-key
 #ENV COSMOS_DB_DATABASE_NAME=your-cosmos-db-database-name
 #ENV COSMOS_DB_CONTAINER_NAME=your-cosmos-db-container-name
-ENV OPENAI_API_KEY=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
+ENV OPENAI_API_KEY=
 
 # Run the application when the container launches
 CMD ["flask", "run", "--host=0.0.0.0"]
